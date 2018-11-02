@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Product.create([
-                   {product: "犬"},
-                   {product: "猫"},
-                   {product: "馬"}
+                   {name: "犬"},
+                   {name: "猫"},
+                   {name: "馬"}
                ])
