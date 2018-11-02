@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
     product = Product.find(params[:id])
     if product.destroy
       # head :no_content, status: :ok
-      render json: Product.all, status: :unprocessable_entity
+      render json: Product.all, status: :ok
     else
       render json: product.errors, status: :unprocessable_entity
     end
