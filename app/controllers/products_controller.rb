@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.create(product: params[:product])
+    @product = Product.create(product_params)
     render json: @product
   end
 
@@ -17,12 +17,19 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product = Product.find(params[:id])
-    if @product.destroy
-      head :no_content, status: :ok
+    product = Product.find(params[:id])
+    if product.destroy
+      # head :no_content, status: :ok
+      render json: Product.all, status: :unprocessable_entity
     else
-      render json: @product.errors, status: :unprocessable_entity
+      render json: product.errors, status: :unprocessable_entity
     end
+  end
+
+  private
+  def product_params
+    p params
+    params.require(:product).permit(:name, :category)
   end
 
 end
